@@ -59,10 +59,10 @@ docker compose up -d
 
 Test the API once the stack is up:
 ```bash
-curl http://localhost:4000/v1/models \
+curl http://freellm.torontoai.io:4000/v1/models \
   -H "Authorization: Bearer torontoai"
 
-curl http://localhost:4000/v1/chat/completions \
+curl http://freellm.torontoai.io:4000/v1/chat/completions \
   -H "Authorization: Bearer torontoai" \
   -H "Content-Type: application/json" \
   -d '{
@@ -70,6 +70,13 @@ curl http://localhost:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
   }'
 ```
+curl http://130.250.171.119:8001/v1/chat/completions \
+  -H "Authorization: Bearer SECRETKEY123" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen/Qwen3-0.6B",
+    "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
+  }'
 
 ## Running vLLM with Docker
 
@@ -84,4 +91,6 @@ docker run --runtime nvidia --gpus all \
   --model Qwen/Qwen3-0.6B
 ```
 
-With Docker, firewall hardening, and the proxy configuration in place, you have the building blocks needed to host and secure a private LLM service.
+
+sudo iptables -I INPUT -s 18.236.254.81 -p tcp --dport 8002 -j ACCEPT
+sudo iptables -I INPUT -s 18.236.254.81 -p tcp --dport 8003 -j ACCEPT

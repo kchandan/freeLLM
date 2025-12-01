@@ -75,7 +75,7 @@ curl http://freellm.torontoai.io:4000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
   }'
 ```
-curl http://130.250.171.119:8001/v1/chat/completions \
+curl http://<IP Address>:8001/v1/chat/completions \
   -H "Authorization: Bearer SECRETKEY123" \
   -H "Content-Type: application/json" \
   -d '{

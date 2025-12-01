@@ -2,6 +2,11 @@
 
 A lightweight reference setup for running the FreeLLM proxy alongside a hardened vLLM server. The repository combines container configuration, metrics tooling, and automation to help you bootstrap a secure deployment quickly.
 
+# FreeLLM Architecture
+
+<img width="888" height="736" alt="image" src="https://github.com/user-attachments/assets/a9ddd1a1-21ab-459a-a20b-0738babbb4f5" />
+
+
 ## Repository Layout
 
 ```

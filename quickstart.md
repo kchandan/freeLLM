@@ -1,4 +1,26 @@
 
+## Running the FreeLLM Proxy with Ollama Locally
+
+Bring the proxy stack up with Docker Compose (includes Redis and optional metrics exporters):
+
+```bash
+docker compose up -d
+```
+
+Test the API once:
+
+```bash
+curl http://localhost:4000/v1/models \
+  -H "Authorization: Bearer freellm"
+
+curl http://localhost:4000/v1/chat/completions \
+  -H "Authorization: Bearer freellm" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ollama/llama3.2",
+    "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
+  }'
+```
 
 > **Tip:** Disable strict host key checking when iterating on a fresh machine: `export ANSIBLE_HOST_KEY_CHECKING=False`.
 
@@ -26,26 +48,6 @@
 
 Role defaults keep SSH (TCP/22) open and lock down the proxy port (TCP/8001) to the CIDR list you supply via `allowed_8001_cidrs`. Override these variables in your inventory or on the command line to match your environment.
 
-## Running the FreeLLM Proxy Locally
-
-Bring the proxy stack up with Docker Compose (includes Redis and optional metrics exporters):
-```bash
-docker compose up -d
-```
-
-Test the API once the stack is up:
-```bash
-curl http://freellm.torontoai.io:4000/v1/models \
-  -H "Authorization: Bearer torontoai"
-
-curl http://freellm.torontoai.io:4000/v1/chat/completions \
-  -H "Authorization: Bearer torontoai" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "Qwen/Qwen3-0.6B",
-    "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
-  }'
-```
 curl http://<IP Address>:8001/v1/chat/completions \
   -H "Authorization: Bearer SECRETKEY123" \
   -H "Content-Type: application/json" \

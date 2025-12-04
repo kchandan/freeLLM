@@ -41,9 +41,17 @@ curl https://freellm.quick-labs.io/v1/chat/completions \
     "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
   }'
 
-> **Tip:** Disable strict host key checking when iterating on a fresh machine: `export ANSIBLE_HOST_KEY_CHECKING=False`.
 
-## Using the Ansible Automation
+## Add a worker node 
+
+Setup Cloudflare Reverse Proxy
+
+https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/
+
+https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/
+
+`export ANSIBLE_HOST_KEY_CHECKING=False`
+
 
 1. Install the required community collections:
    ```bash

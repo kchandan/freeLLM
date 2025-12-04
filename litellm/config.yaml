@@ -2,8 +2,7 @@ general_settings:
   master_key: freellm
 
 litellm_settings:
-  # other litellm settings
-  max_budget: 10 # (float) sets max budget as $0 USD
+  max_budget: 10 
   budget_duration: 30d 
 
 model_list:
@@ -14,14 +13,6 @@ model_list:
       model_type: ollama
       api_base: http://host.docker.internal:11434
       timeout: 120
-
-  # # ====== vLLM (remote) ======
-  # - model_name: Qwen/Qwen3-0.6B     # your friendly name exposed by LiteLLM
-  #   litellm_params:
-  #     # Use openai-provider style and point it to vLLM's /v1 endpoint
-  #     model: openai/Qwen/Qwen3-0.6B # MUST match exactly what /v1/models returns
-  #     api_base: http://{{freellm_worker1}}:8001/v1
-  #     timeout: 120
 
 router_settings:
   default_litellm_params:

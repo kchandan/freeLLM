@@ -1,9 +1,16 @@
 
-## Running the FreeLLM Proxy with Ollama Locally
+## Running the FreeLLM Proxy with Ollama Locally (MacOS)
 
-Bring the proxy stack up with Docker Compose (includes Redis and optional metrics exporters):
+Install Ollama
+
+Run Llama 3.2:1b
 
 ```bash
+ollama run llama3.2:1b
+```
+
+```bash
+cd litellm
 docker compose up -d
 ```
 
@@ -17,7 +24,7 @@ curl http://localhost:4000/v1/chat/completions \
   -H "Authorization: Bearer freellm" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "ollama/llama3.2",
+    "model": "ollama/llama3.2:1b",
     "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
   }'
 ```

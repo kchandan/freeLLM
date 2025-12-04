@@ -11,7 +11,7 @@ model_list:
     litellm_params:
       model: ollama/llama3.2:1b
       model_type: ollama
-      api_base: http://host.docker.internal:11434
+      api_base: http://ollama-server:11434
       timeout: 120
 
 router_settings:

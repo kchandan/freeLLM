@@ -7,6 +7,8 @@ services:
     image: ghcr.io/berriai/litellm:main-stable
     volumes:
      - ./config.yaml:/app/config.yaml
+    networks:
+      - ai-network
     command:
      - "--config=/app/config.yaml"
     ports:
@@ -35,6 +37,8 @@ services:
       POSTGRES_PASSWORD: dbpassword9090
     ports:
       - "5432:5432"
+    networks:
+      - ai-network
     volumes:
       - postgres_data:/var/lib/postgresql/data # Persists Postgres data across container restarts
     healthcheck:
@@ -50,12 +54,17 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - ai-network
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
       - "--storage.tsdb.retention.time=15d"
     restart: always
 
+networks:
+  ai-network:
+      driver: bridge
 volumes:
   prometheus_data:
     driver: local

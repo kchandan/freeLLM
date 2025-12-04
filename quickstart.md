@@ -29,6 +29,18 @@ curl http://localhost:4000/v1/chat/completions \
   }'
 ```
 
+```
+curl https://freellm.quick-labs.io/v1/models \
+  -H "Authorization: Bearer freellm"
+```
+curl https://freellm.quick-labs.io/v1/chat/completions \
+  -H "Authorization: Bearer freellm" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ollama/llama3.2:1b",
+    "messages": [{"role": "user", "content": "Explain vector databases in two sentences."}]
+  }'
+
 > **Tip:** Disable strict host key checking when iterating on a fresh machine: `export ANSIBLE_HOST_KEY_CHECKING=False`.
 
 ## Using the Ansible Automation
